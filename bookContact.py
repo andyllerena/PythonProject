@@ -53,7 +53,7 @@ def main():
             print("Exiting Contact Book.")
             break
         else:
-            print("Invalid choice. Please choose a valid option.")
+            print("Invalid choice. Please choose a valid option. ")
 
 if __name__ == "__main__":
     main()
