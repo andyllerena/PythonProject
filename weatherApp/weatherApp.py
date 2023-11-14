@@ -37,7 +37,7 @@ def display_weather_info(weather_data):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        api_key = "d5c827900ade9aacafaf838bfe8494c6"  # Replace with your API key
+        api_key = ""  # Replace with your API key
         city_name = request.form["city_name"]
         weather_data = fetch_weather_data(api_key, city_name)
 
