@@ -1,5 +1,8 @@
+from flask import Flask, render_template, request
 import requests
 import json
+
+app = Flask(__name__)
 
 def fetch_weather_data(api_key, city_name):
     base_url = "http://api.openweathermap.org/data/2.5/weather"
@@ -29,14 +32,23 @@ def display_weather_info(weather_data):
     else:
         print("No weather data to display.")
 
+
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        api_key = "d5c827900ade9aacafaf838bfe8494c6"  # Replace with your API key
+        city_name = request.form["city_name"]
+        weather_data = fetch_weather_data(api_key, city_name)
+
+        if weather_data:
+            return render_template("index.html", weather_data=weather_data)
+        else:
+            return render_template("index.html", error="Failed to fetch weather data.")
+    return render_template("index.html")
+
 if __name__ == "__main__":
-    api_key = "d5c827900ade9aacafaf838bfe8494c6"  # Replace with your API key
-    city_name = input("Enter a city name: ")
-
-    weather_data = fetch_weather_data(api_key, city_name)
-
-    if weather_data:
-        display_weather_info(weather_data)
+    app.run(debug=True)
 
 
 
