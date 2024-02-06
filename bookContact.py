@@ -10,7 +10,7 @@ def add_contacts(contacts):
 def view_contacts(contacts):
     if contacts:
         for name, number in contacts.items():
-            print(f"Name: {name}, Phone Number: {number}")
+            print(f"Name: {name},Phone Number: {number}")
     else:
         print("No contacts to view! ")
 
